@@ -18,6 +18,9 @@
                    <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a>
                 </li>
                 <li><a class="dropdown-item" href="{{route('create.article')}}">Crea</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{route('article.index')}}">Tutti gli articoli</a>
+                </li>
                 <form action="{{route ('logout')}}" method="POST" class="d-none" id="form-logout">
                     @csrf
                 </form>
@@ -33,6 +36,19 @@
                 </ul>
                 </li>   
             @endauth
+            <li class="nav-item dropdown">
+                <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle">Categorie</a>
+            <ul class="dropdown-menu">
+             @foreach ($categories as $category)
+                 <li>
+                    <a href="{{route('byCategory', ['category' => $category])}}" class="dropdown-item text-capitalize">{{$category-> name}}</a>
+                 </li>
+                 @if (!$loop->last)
+                 <hr class="dropdown-divider">
+                 @endif
+             @endforeach
+            </ul>
+            </li>
             </ul>
         </div>
     </div>
