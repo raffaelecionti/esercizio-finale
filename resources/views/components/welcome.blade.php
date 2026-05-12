@@ -22,6 +22,15 @@
                     </h3>
                 </div>
             @endforelse
+            @if (session()->('errorMessage'))
+            <div class="alert alert-danger text-center shadow rounded w-50">
+                {{session('errorMessage')}}
+            </div>
+            @endif
+            @if (session()->has('message'))
+            <div class="alert alert-succes text-center shadow rounded w-50">
+                {{ session('message')}}
+            </div>
         </div>
     </div>
 </x-layout>

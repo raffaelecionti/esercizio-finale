@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-           $table->boolean('is_revisor')->default(false);
+        Schema::table('users', function (Blueprint $table) {
+            //
         });
-
-        
-        
-
-       
     }
 
     /**
@@ -26,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-       Schema::table('users', function (Blueprint $table){
-        $table->dropColumn('ise_revisor');
-       });
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };
