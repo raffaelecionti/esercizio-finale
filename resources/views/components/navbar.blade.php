@@ -67,5 +67,8 @@
           Search
          </button>
         </div>
+        <x-locale lang="it" />
+        <x-locale lang="uk" />
+        <x-locale lang="es" />
     </form>
 </nav>
