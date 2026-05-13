@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Scout\Searchable;
+//use Override;
 
 class Article extends Model
 {
+
+    use Searchable;
+
     use HasFactory;
     protected $fillable = [
         'title',
@@ -19,7 +24,7 @@ class Article extends Model
 
 public function user() : BelongsTo
 {
-    return $this->belongsto(User::class);
+    return $this->belongsTo(User::class);
 }
 
 public function category() : BelongsTo
@@ -38,5 +43,16 @@ public static function toBeRevisedCount()
 {
     return Article::where('is_accepted', null)->count();
 }
+
+
+	public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'category' => $this->category,
+        ];
+    }
 
 }
